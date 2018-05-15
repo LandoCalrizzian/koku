@@ -37,8 +37,8 @@ class ApiConfig(AppConfig):
             self.startup_status()
             self.check_and_create_service_admin()
         except (OperationalError, ProgrammingError) as op_error:
-            if "no such table" in str(op_error) or \
-                    "does not exist" in str(op_error):
+            if 'no such table' in str(op_error) or \
+                    'does not exist' in str(op_error):
                 # skip this if we haven't created tables yet.
                 return
             else:
@@ -47,7 +47,7 @@ class ApiConfig(AppConfig):
     def startup_status(self):  # pylint: disable=R0201
         """Log the status of the server at startup."""
         # noqa: E402 pylint: disable=C0413
-        from api.status.model import Status
+        from api.status.models import Status
         status_info = None
         status_count = Status.objects.count()
         if status_count == 0:
