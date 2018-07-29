@@ -145,6 +145,9 @@ objects:
       to:
         kind: ImageStreamTag
         name: ${NAME}:latest
+    resources:
+      limits:
+        memory: ${MEMORY_LIMIT}
     source:
       contextDir: ${CONTEXT_DIR}
       git:
