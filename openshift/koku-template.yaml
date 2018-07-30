@@ -384,6 +384,9 @@ objects:
     name: koku-pgsql
   spec:
     replicas: 1
+    resources:
+      limits:
+        memory: ${DEPLOY_MEMORY_LIMIT}
     selector:
       name: koku-pgsql
     strategy:
@@ -505,6 +508,11 @@ parameters:
 - description: Maximum amount of memory the build container can use.
   displayName: Build Memory Limit
   name: BUILD_MEMORY_LIMIT
+  required: true
+  value: 1Gi
+- description: Maximum amount of memory the deployment container can use.
+  displayName: Deployment Memory Limit
+  name: DEPLOY_MEMORY_LIMIT
   required: true
   value: 1Gi
 - description: Maximum amount of memory the Django container can use.
